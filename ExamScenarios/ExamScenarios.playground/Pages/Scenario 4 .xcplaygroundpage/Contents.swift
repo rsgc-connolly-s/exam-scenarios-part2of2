@@ -23,15 +23,60 @@ import PlaygroundSupport
 // Create a new canvas
 let canvas = Canvas(width: 400, height: 600)
 
-// Color constants
-let offWhite = Color(hue: 87, saturation: 6, brightness: 88, alpha: 100)
-let yellow = Color(hue: 37, saturation: 93, brightness: 98, alpha: 100)
-let pink = Color(hue: 326, saturation: 99, brightness: 93, alpha: 100)
-let blue = Color(hue: 240, saturation: 80, brightness: 50, alpha: 50)
-let black = Color(hue: 0, saturation: 0, brightness: 0, alpha: 100)
 
-// Your code below...
+// Draw background
+canvas.drawShapesWithBorders = false
+canvas.fillColor = Color(hue: 87, saturation: 6, brightness: 88, alpha: 100)
+canvas.drawRectangle(bottomLeftX: 0, bottomLeftY: 0, width: 400, height: 600)
 
+//Draw Square pattern
+for x in stride(from: -50, to: 450, by: 100){
+    for y in stride(from: -75, to: 425, by: 100) {
+        
+        
+        if y - x == -25 || x + y == 275 && x > 200 {
+            canvas.fillColor = Color.init(hue: 37, saturation: 93, brightness: 98, alpha: 100)
+        }
+            
+        else {
+            canvas.fillColor = Color.init(hue: 326, saturation: 99, brightness: 93, alpha: 100)
+        }
+        
+        canvas.drawRoundedRectangle(bottomLeftX: x, bottomLeftY: y, width: 95, height: 95)
+        
+    }
+}
+
+// Clear overlaw
+for x in stride(from: -75, to: 425, by: 100){
+    for y in stride(from: 0, to: 400, by: 100)
+        
+    {
+        canvas.fillColor = Color.init(hue: 240, saturation: 80, brightness: 50, alpha: 50)
+        
+        canvas.drawRoundedRectangle(bottomLeftX: x, bottomLeftY: y, width: 95, height: 95)
+        
+    }
+}
+
+
+// Draw stupid info at the top
+
+//Title
+canvas.textColor = Color.black
+canvas.drawText(message: "velocity girl", size: 45, x: 10, y: 425)
+
+//draw left info
+canvas.drawText(message: "at the tavern", size: 9, x: 10, y: 500)
+canvas.drawText(message: "american university / washington, dc", size: 9, x: 10, y: 490)
+
+//draw top right info
+canvas.drawText(message: "friday", size: 9, x: 275, y: 570)
+canvas.drawText(message: "september 23 1994 / 8pm", size: 9, x: 275, y: 560)
+
+//draw right info
+canvas.drawText(message: "with special guest", size: 12, x: 275, y: 445)
+canvas.drawText(message: "sunny day real estate", size: 12, x: 275 , y: 430)
 //: ## Template code
 //: The code below is necessary to see the result of your work in the Assistant Editor at right. Please do not remove.
 PlaygroundPage.current.liveView = canvas.imageView

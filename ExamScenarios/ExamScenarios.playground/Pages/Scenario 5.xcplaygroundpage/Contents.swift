@@ -42,12 +42,16 @@ func drawArrow(X: Int, Y: Int){
 }
 
 
+//draw arrow pattern
 for x in stride(from: 0, through: 335, by: 67){
     for y in stride(from: 0, through: 335, by: 67){
         
+        //make white
         if x == y {
             canvas.fillColor = Color.white
             drawArrow(X: x, Y: y)
+        
+        //make purple
         }else{
             canvas.fillColor = Color.init(hue: 313, saturation: 77, brightness: 65, alpha: 100)
             drawArrow(X: x, Y: y)
